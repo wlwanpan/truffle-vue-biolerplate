@@ -1,22 +1,56 @@
 <template>
   <div class="dashboard">
-    <h1>{{ msg }}</h1>
+    <div>
+      <h1>{{ msg }}</h1>
+      <a href="#" @click.prevent="openWelcomeDialog">Open Welcome Dialog</a>
+    </div>
+
+    <form @submit.prevent="changeMessage">
+      <input v-model="msg" placeholder="Change Message"/>
+      <button type="submit">Change</button>
+    </form>
+
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+import WelcomeDialog from '@/components/dialogs/WelcomeDialog'
+
 export default {
   name: 'dashboard',
+
   data () {
     return {
-      msg: this.$store.getters.getDappTitle
+      msg: this.$store.getters.getDappTitle,
     }
   },
+
   computed: {
+
+    ...mapGetters([
+      'getDappTitle'
+    ])
+
   },
-  beforeCreate: function () {
-  },
+
   methods: {
+
+    changeMessage: function () {
+      this.$store.dispatch('changeDappTitle', this.msg)
+    },
+
+    openWelcomeDialog: function () {
+      this.$modal.show(
+        WelcomeDialog,
+        {
+          title: 'Welcome',
+          message: this.getDappTitle
+        },
+        { adaptive: true }
+      )
+    }
+
   }
 }
 </script>
@@ -40,4 +74,13 @@ li {
 a {
   color: #42b983;
 }
+
+form {
+  margin-top: 20px;
+}
+
+input {
+  width: 50%
+}
+
 </style>
