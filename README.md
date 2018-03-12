@@ -19,5 +19,6 @@ npm run start
 
 ## Additional Components:
 
-- Vuex
+- Vuex (https://vuex.vuejs.org)
 - Vue-modal (https://github.com/euvl/vue-js-modal)
+- Bootstrap Vue (https://bootstrap-vue.js.org)
