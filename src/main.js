@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import BootstrapVue from 'bootstrap-vue'
 import App from './App'
 import Web3 from 'web3'
 import router from './router'
@@ -6,8 +7,12 @@ import store from './store/store'
 import VModal from 'vue-js-modal'
 import mixins from './js/mixins'
 
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+
 Vue.config.productionTip = false
 Vue.use(VModal, { dynamic: true })
+Vue.use(BootstrapVue);
 
 window.addEventListener('load', function () {
   if (typeof web3 !== 'undefined') {
@@ -31,4 +36,3 @@ window.addEventListener('load', function () {
     components: { App }
   })
 })
-

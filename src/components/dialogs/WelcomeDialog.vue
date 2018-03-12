@@ -5,6 +5,7 @@
       <p>{{ message }}</p>
     </div>
     <button @click="$emit('close')">Close</button>
+    <b-button :size="size" :variant="variant">hello </b-button>
   </div>
 </template>
 
